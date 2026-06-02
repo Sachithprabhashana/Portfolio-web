@@ -1,16 +1,18 @@
-export const projectData = [
+export const projectsData = [
     {
         id: 1,
-        title: "E-Commerce Full-Stack App",
-        description: "A complete MERN stack application featuring Stripe payments, JWT auth, and a responsive frontend.",
-        tags: ["React", "Node.js", "MongoDB", "Stripe"],
-        github: "https://github.com/yourusername/project-one"
+        title: "MERN Full-Stack Web App",
+        description: "Built a robust web platform using MongoDB, Express.js, React, and Node.js with secure JWT authentication and Stripe payment integration.",
+        tags: ["React", "Node.js", "Express", "MongoDB", "Stripe"]
     },
     {
-        id: 2,
-        title: "AI Real-Time Object Detector",
-        description: "A Computer Vision application built to detect faces and objects in real-time.",
-        tags: ["Python", "TensorFlow", "OpenCV", "React"],
-        github: "https://github.com/yourusername/project-two"
+        title: "Computer Vision Applications",
+        description: "Developed facial recognition and real-time object detection processing systems using Python, TensorFlow, and OpenCV.",
+        tags: ["Python", "TensorFlow", "OpenCV", "Computer Vision"]
+    },
+    {
+        title: "Generative AI Mobile Integration",
+        description: "Integrated custom Generative AI feature sets into responsive React Native mobile application workflows.",
+        tags: ["React Native", "Generative AI", "API Integration"]
     }
 ];
