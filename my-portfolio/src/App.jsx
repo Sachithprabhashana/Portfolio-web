@@ -2,33 +2,20 @@ import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div className="App">
-      {/* Navigation Header */}
-      <div className="nav">
-        <h1>Sachith Prabhashana</h1>
-        <ul>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#projects">Projects</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Modular Content Sections */}
-      <main>
+    <div>
+      <Navbar />
+      <div style={{ paddingTop: "76px" }}>
+        {" "}
+        {/* Prevents the navbar from overlapping your text content */}
         <Hero />
         <About />
         <Projects />
         <Contact />
-      </main>
+      </div>
     </div>
   );
 };
