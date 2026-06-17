@@ -1,51 +1,31 @@
-/* Global Reset & Base Styles */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth; /* Smooth scrolling when clicking nav links */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
 }
 
-/* Sticky Navigation Bar */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
+body {
+  background-color: #18001d;
+  color: #ffffff !important;
+  line-height: 1.6;
+}
+
+/* Center Content Wrapper */
+.header-center-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 1.5rem 10%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  gap: 0.75rem;
 }
 
-.nav h1 {
-  font-size: 1.5rem;
-  color: #0070f3;
-}
-
-.nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #555;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.nav a:hover {
-  color: #0070f3;
+/* Beautiful Serif Typography for Name */
+.developer-name {
+  font-family: "Georgia", serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #0f172a;
+  letter-spacing: 0.5px;
 }
 
 /* Sections Configuration */
@@ -80,7 +60,7 @@ h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
   position: relative;
-  color: #111;
+  color: #a855f7;
 }
 
 /* Projects Grid Layout */
@@ -93,26 +73,509 @@ h2 {
 }
 
 .project-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eaeaea;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  overflow: hidden; /* This keeps the image corners rounded inside the card */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  margin-top: 1rem;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+/* Padding container for the text elements under the image */
+.project-card-content {
+  padding: 1.5rem;
+  margin-top: 3rem; /* Pushes the content to the bottom of the card */
+  flex: 1; /* Ensures the content area takes up remaining space */
+  background-color: #0b0f19; /* Matches the slider background for visual consistency */
 }
 
-.project-card h3 {
-  margin-bottom: 0.75rem;
-  color: #0070f3;
+/* slider */
+
+/* Container Box */
+.carousel-container {
+  position: relative; /* CRITICAL: Allows absolute buttons to sit on top */
+  width: 100%;
+  height: 220px;
+  background-color: #0b0f19;
+  overflow: hidden;
 }
 
-.project-card p {
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1.5;
+/* Fallback screen if images are empty */
+.carousel-container.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+/* Responsive Scaling Image Handler */
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.25s ease-in-out; /* Controls how fast the image blends */
+}
+
+/* Overlay Navigation Arrow Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(15, 23, 42, 0.75);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 0.75rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 10; /* Forces buttons above the image */
+  transition: background-color 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #3b82f6;
+}
+
+.prev {
+  left: 0.75rem;
+}
+.next {
+  right: 0.75rem;
+}
+
+/* Tracking Indicator Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+
+.dot.active {
+  background-color: #3b82f6;
+  width: 16px;
+  border-radius: 4px;
+}
+
+/* Custom fade animation classes */
+.carousel-image.fade-in {
+  opacity: 1;
+}
+
+.carousel-image.fade-out {
+  opacity: 0.1; /* Drops close to invisible during the fast state index changes */
+}
+
+/* Hero Main Container */
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px); /* Adjusts perfectly below your navbar height */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 4rem;
+}
+
+/* Text Content Container Floating Over the Canvas */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  pointer-events: none; /* Allows mouse interactions to pass directly to the 3D model */
+  padding: 0 1rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.hero-title .highlight {
+  color: #a855f7; /* Purple hue from the reference image */
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* 3D Canvas Box Positioning */
+.canvas-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Scroll Mouse Icon Indicator CSS */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  z-index: 10;
+}
+
+.mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid #94a3b8;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background-color: #a855f7;
+  border-radius: 2px;
+  animation: scrollAnim 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollAnim {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* ===================================================
+   MOBILE-RESPONSIVE DARK PORTFOLIO NAVBAR
+   =================================================== */
+
+.main-portfolio-header,
+.main-portfolio-header * {
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+}
+
+.main-portfolio-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 76px !important;
+  background-color: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center !important;
+  z-index: 99999 !important;
+}
+
+.header-nav-container {
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.header-logo-block {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+  z-index: 100001 !important; /* Stays fixed above overlay layouts */
+}
+
+.logo-letter-badge {
+  width: 38px !important;
+  height: 38px !important;
+  background: linear-gradient(135deg, #e04343, #8b5cf6) !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  font-family: sans-serif !important;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4) !important;
+}
+
+.logo-title-text {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.3px !important;
+  font-family: sans-serif !important;
+}
+
+/* Desktop Layout Configuration */
+.header-right-side-desktop {
+  display: flex !important;
+  align-items: center !important;
+  gap: 3rem !important;
+}
+
+.header-nav-menu {
+  display: flex !important;
+  gap: 3rem !important;
+}
+
+.header-menu-link {
+  text-decoration: none !important;
+  color: #94a3b8 !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  font-family: sans-serif !important;
+  transition: color 0.25s ease !important;
+}
+
+.header-menu-link:hover {
+  color: #ffffff !important;
+}
+
+.navbar-cv-btn {
+  text-decoration: none !important;
+  color: #ffffff !important;
+  font-family: sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  padding: 0.6rem 1.4rem !important;
+  border-radius: 50px !important;
+  background: linear-gradient(135deg, #8b5cf6, #e04343) !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2) !important;
+  cursor: pointer !important;
+}
+
+.navbar-cv-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 20px rgba(224, 67, 67, 0.6), 0 0 10px rgba(139, 92, 246, 0.4) !important;
+}
+
+/* ===================================================
+   MOBILE STYLING MODES (Breakpoints < 768px)
+   =================================================== */
+
+/* Custom Menu Toggle Icon Button */
+.mobile-hamburger-btn {
+  display: none !important; /* Invisible on desktop screens */
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  padding: 8px !important;
+  z-index: 100001 !important;
+}
+
+.bar-line {
+  display: block !important;
+  width: 24px !important;
+  height: 2px !important;
+  background-color: #ffffff !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Smooth Interactive Hidden Drawer Overlays */
+.mobile-dropdown-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: #000000 !important;
+  z-index: 100000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-20px) !important;
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* Trigger states when the state switches to true */
+.mobile-dropdown-drawer.drawer-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+.mobile-drawer-links {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2.5rem !important;
+}
+
+.mobile-drawer-link {
+  text-decoration: none !important;
+  color: #94a3b8 !important;
+  font-size: 1.5rem !important; /* Clean readability on mobile screens */
+  font-weight: 600 !important;
+  font-family: sans-serif !important;
+  transition: color 0.2s !important;
+}
+
+.mobile-drawer-link:hover {
+  color: #ffffff !important;
+}
+
+.mobile-cv-btn {
+  font-size: 1.1rem !important;
+  padding: 0.8rem 2rem !important;
+}
+
+@media (max-width: 768px) {
+  .header-right-side-desktop {
+    display: none !important; /* Removes desktop bar on narrow screens */
+  }
+
+  .mobile-hamburger-btn {
+    display: flex !important; /* Reveals tap trigger icon button */
+  }
+
+  /* Animates standard lines to form an "X" close symbol layout when open */
+  .mobile-hamburger-btn.is-active .bar-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg) !important;
+  }
+  .mobile-hamburger-btn.is-active .bar-line:nth-child(2) {
+    opacity: 0 !important;
+  }
+  .mobile-hamburger-btn.is-active .bar-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg) !important;
+  }
+}
+
+/* about */
+
+/* About section styles - add to src/index.css */
+.about-section {
+  padding: 56px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: #e9eef8;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: center;
+}
+
+.about-heading {
+  color: #b57bff; /* purple heading */
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.about-name {
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.about-role {
+  color: #bfc8d6;
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.about-intro {
+  color: #cbd5e1;
+  line-height: 1.6;
+  max-width: 60ch;
+  margin-bottom: 14px;
+}
+
+.about-skills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.skill-pill {
+  background: rgba(255, 255, 255, 0.04);
+  color: #f1ecff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.about-actions {
+  margin-top: 18px;
+}
+
+.about-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-profile {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 12px;
+  /* object-fit: cover; */
+  /* border: 3px solid rgba(181, 123, 255, 0.08); */
+  /* background: #f3f4f6; */
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-right {
+    margin-top: 18px;
+  }
+  .about-name {
+    font-size: 28px;
+  }
 }
