@@ -40,7 +40,7 @@ const Navbar = () => {
               onClick={(e) => handleScroll(e, "projects")}
               className="header-menu-link"
             >
-              Work
+              Projects
             </a>
             <a
               href="#contact"
@@ -88,7 +88,7 @@ const Navbar = () => {
             onClick={(e) => handleScroll(e, "projects")}
             className="mobile-drawer-link"
           >
-            Work
+            Projects
           </a>
           <a
             href="#contact"
