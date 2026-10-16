@@ -5,7 +5,7 @@ import { OrbitControls, useGLTF, Stage } from "@react-three/drei";
 // 1. Separate component to safely load the 3D Model
 const DesktopModel = () => {
   // Path points directly to the public folder
-  const { scene } = useGLTF("/models/pc.glb");
+  const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/pc.glb`);
   return <primitive object={scene} scale={1.5} position={[0, -1, 0]} />;
 };
 
