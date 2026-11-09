@@ -199,6 +199,7 @@ h2 {
 .hero-content {
   position: relative;
   z-index: 10;
+  margin-top: -4rem;
   text-align: center;
   max-width: 800px;
   pointer-events: none; /* Allows mouse interactions to pass directly to the 3D model */
@@ -209,7 +210,7 @@ h2 {
   font-size: 3.5rem;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   letter-spacing: -1px;
 }
 
@@ -228,10 +229,10 @@ h2 {
 /* 3D Canvas Box Positioning */
 .canvas-wrapper {
   position: absolute;
-  top: 0;
+  top: 10;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80%;
   z-index: 1;
 }
 
